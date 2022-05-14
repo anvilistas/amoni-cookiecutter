@@ -1,0 +1,96 @@
+allow_embedding: false
+package_name: anvil_labs_test
+startup: { type: module, module: startup }
+name: Anvil Labs Test
+startup_form: null
+runtime_options:
+  {
+    version: 2,
+    client_version: "3",
+    server_version: python3-full,
+    server_spec: null,
+  }
+dependencies:
+#   - app_id: anvil_labs
+#     version: { dev: true }
+  - app_id: anvil_extras
+    version: { dev: true }
+services:
+  - source: /runtime/services/tables.yml
+    client_config: {}
+    server_config: {}
+db_schema:
+  events:
+    title: Events
+    client: search
+    server: full
+    columns:
+      - name: event_id
+        admin_ui: { width: 200 }
+        type: number
+      - name: recorded_at
+        admin_ui: { width: 200 }
+        type: datetime
+      - name: occurred_at
+        admin_ui: { width: 200 }
+        type: datetime
+      - name: event_type
+        admin_ui: { width: 200 }
+        type: string
+      - name: object_id
+        admin_ui: { width: 200 }
+        type: string
+      - name: object_type
+        admin_ui: { width: 200 }
+        type: string
+      - name: state
+        admin_ui: { width: 750 }
+        type: simpleObject
+      - name: predecessor
+        admin_ui: { width: 200 }
+        type: number
+      - name: state_diff
+        admin_ui: { width: 200 }
+        type: simpleObject
+  projections:
+    title: Projections
+    client: none
+    server: full
+    columns:
+      - name: name
+        admin_ui: { width: 200 }
+        type: string
+      - name: played_to
+        admin_ui: { width: 200 }
+        type: number
+      - name: last_played_at
+        admin_ui: { width: 200 }
+        type: datetime
+      - name: projector
+        admin_ui: { width: 200 }
+        type: string
+  sequences:
+    title: Sequences
+    client: none
+    server: full
+    columns:
+      - name: name
+        admin_ui: { width: 200 }
+        type: string
+      - name: value
+        admin_ui: { width: 200 }
+        type: number
+  current:
+    title: current
+    client: search
+    server: full
+    columns:
+      - name: object_type
+        admin_ui: { width: 200 }
+        type: string
+      - name: object_id
+        admin_ui: { width: 200 }
+        type: string
+      - name: state
+        admin_ui: { width: 887.76666 }
+        type: simpleObject
