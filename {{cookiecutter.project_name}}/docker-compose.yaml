@@ -14,6 +14,7 @@ services:
       - POSTGRES_USER=anvil
       - POSTGRES_DB=anvil
       - POSTGRES_PASSWORD=anvil
+    pull_policy: always
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U anvil"]
       interval: 10s
@@ -31,6 +32,7 @@ services:
       - ./.anvil_data:/anvil_data
     working_dir: /app
     command: anvil-app-server --config-file config.yaml
+    pull_policy: always
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:3030 || exit 1"]
       interval: 10s
