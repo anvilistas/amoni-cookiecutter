@@ -30,7 +30,7 @@ services:
       - "3030:3030"
     volumes:
       - ./app:/app
-      - {{ cookiecutter.project_name }}-anvil_data:/anvil_data
+      - {{ cookiecutter.project_name }}-anvil-data:/anvil_data
     working_dir: /app
     command: anvil-app-server --config-file config.yaml
     pull_policy: always
