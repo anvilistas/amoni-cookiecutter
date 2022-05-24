@@ -20,7 +20,7 @@ services:
       timeout: 5s
       retries: 5
   app:
-    image: ghcr.io/anvilistas/amoni-docker/app:latest
+    image: ghcr.io/anvilistas/amoni-app-server/app:latest
     depends_on:
       db:
         condition: service_healthy
@@ -28,17 +28,11 @@ services:
       - "3030:3030"
     volumes:
       - ./app:/app
+      - ./.anvil_data:/anvil_data
+    working_dir: /app
     command: anvil-app-server --config-file config.yaml
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:3030 || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
-  test_runner:
-    image: ghcr.io/anvilistas/amoni-docker/test_runner:latest
-    depends_on:
-      app:
-        condition: service_healthy
-    volumes:
-      - ./tests:/code/tests
-    command: python -m pytest
