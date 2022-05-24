@@ -10,7 +10,7 @@ services:
     ports: 
       - "5432:5432"
     volumes:
-      - {{ cookiecutter.project_name }}-postgres:/var/lib/postgresql/data
+      - {{ cookiecutter.project_name }}-postgresql:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=anvil
       - POSTGRES_DB=anvil
