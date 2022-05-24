@@ -18,7 +18,7 @@ services:
     pull_policy: always
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U anvil"]
-      interval: 10s
+      interval: 2s
       timeout: 5s
       retries: 5
   app:
@@ -36,6 +36,6 @@ services:
     pull_policy: always
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:3030 || exit 1"]
-      interval: 10s
+      interval: 5s
       timeout: 5s
       retries: 5
