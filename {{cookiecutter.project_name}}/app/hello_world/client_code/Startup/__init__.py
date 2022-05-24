@@ -1,6 +1,6 @@
-from ._anvil_designer import Form2Template
+from ._anvil_designer import StartupTemplate
 
 
-class Form2(Form2Template):
+class Startup(StartupTemplate):
     def __init__(self, **properties):
         self.init_components(**properties)
