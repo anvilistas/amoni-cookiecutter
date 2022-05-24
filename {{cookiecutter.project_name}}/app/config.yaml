@@ -1,4 +1,4 @@
-app: /app
+app: /app/{{ app_folder_name }}
 data-dir: /anvil_data
 database: jdbc:postgresql://db/anvil?username=anvil&password=anvil
 uplink-key: uplink-key
