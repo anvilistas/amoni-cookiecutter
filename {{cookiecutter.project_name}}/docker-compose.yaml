@@ -2,7 +2,7 @@ version: "3"
 
 volumes:
   {{ cookiecutter.project_name }}-postgresql:
-  {{ cookiecutter.project_name }}-anvil-data:
+  {{ cookiecutter.project_name }}-anvil:
 
 services:
   db:
@@ -30,7 +30,7 @@ services:
       - "3030:3030"
     volumes:
       - ./app:/app
-      - {{ cookiecutter.project_name }}-anvil-data:/anvil_data
+      - {{ cookiecutter.project_name }}-anvil:/anvil_data
     working_dir: /app
     command: anvil-app-server --config-file config.yaml
     pull_policy: always
@@ -39,3 +39,11 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+  test_runner:
+    image: ghcr.io/anvilistas/amoni/test_runner:latest
+    depends_on:
+      app:
+        condition: service_healthy
+    volumes:
+      - ./tests:/code/tests
+    command: python -m pytest
