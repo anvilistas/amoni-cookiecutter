@@ -2,7 +2,6 @@ version: "3"
 
 volumes:
   postgresql:
-  anvil:
 
 services:
   db:
@@ -31,7 +30,7 @@ services:
       - "3030:3030"
     volumes:
       - ./app:/app
-      - anvil:/anvil_data
+      - ./.anvil_data:/anvil_data
     working_dir: /app
     command: anvil-app-server --config-file config.yaml
     healthcheck:
