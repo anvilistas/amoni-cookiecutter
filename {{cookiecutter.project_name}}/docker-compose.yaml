@@ -21,7 +21,9 @@ services:
       timeout: 5s
       retries: 5
   app:
-    image: ghcr.io/anvilistas/amoni/app-server:latest
+    build:
+      context: .
+      dockerfile: docker/app-server/Dockerfile
     depends_on:
       db:
         condition: service_healthy
