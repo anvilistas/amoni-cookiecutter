@@ -1,0 +1,1 @@
+app: {{ cookiecutter.app_folder_name }}
