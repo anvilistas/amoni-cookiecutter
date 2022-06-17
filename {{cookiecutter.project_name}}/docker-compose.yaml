@@ -46,3 +46,10 @@ services:
     volumes:
       - ./tests:/code/tests
     command: python -m pytest
+  theme_builder:
+    build:
+      context: .
+      dockerfile: docker/theme_builder/Dockerfile
+    volumes:
+      - ./app:/app
+      - ./theme:/theme

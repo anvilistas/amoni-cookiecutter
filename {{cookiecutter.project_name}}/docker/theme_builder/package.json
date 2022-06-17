@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "build": "postcss css/index.css -o /app/theme/assets/theme.css"
+  },
+  "dependencies": {
+    "cssnano": "^5.0.4",
+    "postcss": "^8.3.0",
+    "postcss-cli": "^8.0.0",
+    "postcss-import": "^14.0.0"
+  }
+}
