@@ -7,7 +7,7 @@ services:
   db:
     image: postgres
     ports: 
-      - "5432:5432"
+      - "${AMONI_DB_PORT:-5432}:5432"
     volumes:
       - postgresql:/var/lib/postgresql/data
     environment:
@@ -27,12 +27,15 @@ services:
       db:
         condition: service_healthy
     ports: 
-      - "3030:3030"
+      - "${AMONI_APP_PORT:-3030}:3030"
     volumes:
       - ./app:/app
       - ./logs:/anvil_data
     working_dir: /app
-    command: anvil-app-server --config-file config.yaml
+    command: >
+      anvil-app-server 
+      --config-file config.yaml
+      --origin ${ORIGIN_URL}
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:3030 || exit 1"]
       interval: 5s

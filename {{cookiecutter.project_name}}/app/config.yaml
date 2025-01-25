@@ -4,3 +4,5 @@ database: jdbc:postgresql://db/anvil?username=anvil&password=anvil
 uplink-key: uplink-key
 client-uplink-key: client-uplink-key
 auto-migrate: true
+port: "3030"  # Internal Docker port - do not change this
+disable-tls: false  # Set to true when using Cloudflare Tunnel
