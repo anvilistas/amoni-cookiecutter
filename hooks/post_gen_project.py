@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # SPDX-License-Identifier: MIT
 #
 # Copyright (c) 2021 The Amoni project team members listed at
@@ -5,9 +6,14 @@
 #
 # This software is published at https://github.com/anvilistas/amoni-cookiecutter
 
-from ._anvil_designer import StartupTemplate
+import shutil
 
 
-class Startup(StartupTemplate):
-    def __init__(self, **properties):
-        self.init_components(**properties)
+def main():
+    """Post project generation hook"""
+    # Copy env.template to .env
+    shutil.copy("env.template", ".env")
+
+
+if __name__ == "__main__":
+    main()
